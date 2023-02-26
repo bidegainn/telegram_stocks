@@ -8,7 +8,7 @@ BELO_USDT = "https://criptoya.com/api/belo/usdt/ars/0.5"
 def get_mep():
     pass
 
-def get_usdt(url):
+def get_usdt(url: str) -> str:
     req = requests.get(url).text
     res = json.loads(req)
     value_usdt = res.get('ask')
