@@ -1,10 +1,11 @@
 import requests
 import json
+from dotenv import load_dotenv
+import os
 
-
-USDT = "https://criptoya.com/api/belo/usdt/ars/0.5"
-MEP = "https://www.dolarsi.com/api/api.php?type=valoresprincipales"
-
+load_dotenv()
+USDT = os.environ["USDT"]
+MEP = os.environ["MEP"]
 
 
 def get_usdt(url: str) -> str:
