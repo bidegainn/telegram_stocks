@@ -20,6 +20,6 @@ bot = telebot.TeleBot(BOT_TOKEN)
 def send_welcome(message):
     usdt =  get_usdt(USDT)
     print(usdt)
-    bot.reply_to(message, f"usdt: {usdt}")
+    bot.reply_to(message, f"The value of usdt: {usdt}")
 
 bot.infinity_polling()
