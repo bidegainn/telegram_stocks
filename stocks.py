@@ -2,8 +2,8 @@ import requests
 import json
 from dotenv import load_dotenv
 import os
-import telebot
 
+from yahoo_fin import stock_info as si
 
 
 load_dotenv()
@@ -24,11 +24,10 @@ def get_mep(url: str) -> str:
 
 
 def get_tsla():
-    pass
+    ticker_price = si.get_live_price("TSLA")
+    return round(ticker_price, 2)
 
 
 
 
 
-#get_usdt(USDT)
-#get_mep(MEP)

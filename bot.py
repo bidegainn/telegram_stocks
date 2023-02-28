@@ -3,7 +3,7 @@ import os
 import telebot
 
 
-from stocks import get_usdt, get_mep
+from stocks import get_usdt, get_mep, get_tsla
 
 load_dotenv()
 BOT_TOKEN = os.environ["TOKEN_TELEGRAM"]
@@ -20,6 +20,7 @@ bot = telebot.TeleBot(BOT_TOKEN)
 def send_welcome(message):
     usdt =  get_usdt(USDT)
     mep = get_mep(MEP)
-    bot.reply_to(message, f"The value of USDT: {usdt} \nThe value of MEP:  {mep}")
+    tsla = get_tsla()
+    bot.reply_to(message, f"USDT: {usdt} \nMEP:  {mep}\nTSLA: {tsla}")
 
 bot.infinity_polling()
