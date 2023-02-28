@@ -1,14 +1,16 @@
-import requests
-import json
 from dotenv import load_dotenv
 import os
 import telebot
 
 
+from stocks import get_usdt
+
 load_dotenv()
+BOT_TOKEN = os.environ["TOKEN_TELEGRAM"]
 USDT = os.environ["USDT"]
 MEP = os.environ["MEP"]
-BOT_TOKEN = os.environ["TOKEN_TELEGRAM"]
+
+
 
 
 
@@ -16,6 +18,8 @@ bot = telebot.TeleBot(BOT_TOKEN)
 
 @bot.message_handler(commands=['start', 'hello'])
 def send_welcome(message):
-    bot.reply_to(message, "Howdy, how are you doing?")
+    usdt =  get_usdt(USDT)
+    print(usdt)
+    bot.reply_to(message, f"command /start o /hello sent {usdt}")
 
 bot.infinity_polling()

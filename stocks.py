@@ -5,22 +5,22 @@ import os
 import telebot
 
 
+
 load_dotenv()
 USDT = os.environ["USDT"]
 MEP = os.environ["MEP"]
 BOT_TOKEN = os.environ["TOKEN_TELEGRAM"]
 
-def get_usdt(url: str) -> str:
+def get_usdt(url: str) -> int:
     req = requests.get(url).text
     res = json.loads(req)
     value_usdt = res.get('ask')
-    print("The usdt value is: " + str(value_usdt))
-
+    return value_usdt
 
 def get_mep(url: str) -> str:
     req = requests.get(url).json()[4]
     value_mep = req.get('casa').get('compra')
-    print("The USDMep value is: " + str(value_mep))
+    return value_mep
 
 
 def get_tsla():
@@ -30,5 +30,5 @@ def get_tsla():
 
 
 
-get_usdt(USDT)
-get_mep(MEP)
+#get_usdt(USDT)
+#get_mep(MEP)
